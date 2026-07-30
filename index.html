@@ -35,12 +35,17 @@
     </a>
     <nav class="nav">
       <a href="#benefices">Bénéfices</a>
-      <a href="#fonctionnalites">Fonctionnalités</a>
-      <a href="#cas-clients">Cas clients</a>
-      <a href="#tarifs">Tarifs</a>
-      <a href="#faq">FAQ</a>
+      <a href="#fonctionnalites" data-i18n="nav.features">Fonctionnalités</a>
+      <a href="#cas-clients" data-i18n="nav.cases">Cas clients</a>
+      <a href="#tarifs" data-i18n="nav.pricing">Tarifs</a>
+      <a href="#faq" data-i18n="nav.faq">FAQ</a>
     </nav>
-    <a href="https://wa.me/32467801041?text=Bonjour%2C%20je%20souhaite%20une%20d%C3%A9mo%20AdminBelgique" class="btn btn-primary btn-sm" target="_blank">📅 Démo personnalisée</a>
+    <div class="lang-switcher">
+      <button data-lang="fr" class="active" aria-label="Français">🇫🇷 FR</button>
+      <button data-lang="nl" aria-label="Nederlands">🇧🇪 NL</button>
+      <button data-lang="en" aria-label="English">🇬🇧 EN</button>
+    </div>
+    <a href="https://wa.me/32467801041?text=Bonjour%2C%20je%20souhaite%20une%20d%C3%A9mo%20AdminBelgique" class="btn btn-primary btn-sm" target="_blank" data-i18n="header.cta">📅 Démo personnalisée</a>
   </div>
 </header>
 
@@ -48,20 +53,20 @@
 <section class="hero">
   <div class="container">
     <div class="hero-badges">
-      <span class="badge">🇧🇪 Conçu pour les PME belges</span>
-      <span class="badge">🔒 RGPD — données en Belgique</span>
-      <span class="badge">⚡ 30 min pour démarrer</span>
+      <span class="badge" data-i18n="hero.badge.belgian">🇧🇪 Conçu pour les PME belges</span>
+      <span class="badge" data-i18n="hero.badge.rgpd">🔒 RGPD — données en Belgique</span>
+      <span class="badge" data-i18n="hero.badge.quick">⚡ 30 min pour démarrer</span>
     </div>
-    <h1>Vos employés passent <span class="hl">5h/semaine</span> en paperasse.<br>AdminBelgique leur en rend <span class="hl">4</span>.</h1>
-    <p class="hero-sub">L'assistant IA qui automatise vos démarches administratives. Conçu pour les PME belges. Conforme RGPD. 30 min pour démarrer.</p>
+    <h1 data-i18n="hero.title">Vos employés passent <span class="hl">5h/semaine</span> en paperasse.<br>AdminBelgique leur en rend <span class="hl">4</span>.</h1>
+    <p class="hero-sub" data-i18n="hero.sub">L'assistant IA qui automatise vos démarches administratives. Conçu pour les PME belges. Conforme RGPD. 30 min pour démarrer.</p>
     <div class="hero-cta">
-      <a href="https://wa.me/32467801041?text=Bonjour%2C%20je%20souhaite%20une%20d%C3%A9mo%20AdminBelgique%20pour%20mon%20entreprise" class="btn btn-primary btn-lg" target="_blank">📅 Démo personnalisée pour mon entreprise</a>
-      <a href="https://adminbelgique.base44.app" class="btn btn-secondary btn-lg">⚙️ Voir une démo interactive</a>
+      <a href="https://wa.me/32467801041?text=Bonjour%2C%20je%20souhaite%20une%20d%C3%A9mo%20AdminBelgique%20pour%20mon%20entreprise" class="btn btn-primary btn-lg" target="_blank" data-i18n="hero.cta1">📅 Démo personnalisée pour mon entreprise</a>
+      <a href="https://adminbelgique.base44.app" class="btn btn-secondary btn-lg" data-i18n="hero.cta2">⚙️ Voir une démo interactive</a>
     </div>
     <div class="hero-trust">
-      <span>✓ Sans engagement</span>
-      <span>✓ Configuration incluse</span>
-      <span>✓ Support en français</span>
+      <span data-i18n="hero.trust.1">✓ Sans engagement</span>
+      <span data-i18n="hero.trust.2">✓ Configuration incluse</span>
+      <span data-i18n="hero.trust.3">✓ Support en français</span>
     </div>
   </div>
 </section>
@@ -91,7 +96,7 @@
 <!-- ===== PROBLÈMES ===== -->
 <section class="pain" id="benefices">
   <div class="container">
-    <h2 class="section-title">Ce que vous faites <span class="hl">aujourd'hui</span> sans AdminBelgique</h2>
+    <h2 class="section-title" data-i18n="pain.title">Ce que vous faites <span class="hl">aujourd'hui</span> sans AdminBelgique</h2>
     <div class="pain-grid">
       <div class="pain-card">
         <div class="pain-emoji">📨</div>
@@ -115,7 +120,7 @@
 <!-- ===== SOLUTION ===== -->
 <section class="solution" id="fonctionnalites">
   <div class="container">
-    <h2 class="section-title">Ce qu'AdminBelgique <span class="hl">fait pour vous</span></h2>
+    <h2 class="section-title" data-i18n="feat.title">Ce qu'AdminBelgique <span class="hl">fait pour vous</span></h2>
     <p class="section-sub">Un assistant IA formé sur les démarches belges, qui apprend votre métier en 30 minutes.</p>
     <div class="features-grid">
       <div class="feature">
@@ -155,7 +160,7 @@
 <!-- ===== CAS CLIENTS ===== -->
 <section class="examples" id="exemples">
   <div class="container">
-    <h2 class="section-title">Concrètement, <span class="hl">ça donne quoi</span> ?</h2>
+    <h2 class="section-title" data-i18n="examples.title">Concrètement, <span class="hl">ça donne quoi</span> ?</h2>
     <p class="section-sub">Voici ce qu'AdminBelgique génère pour vous en quelques secondes.</p>
     <div class="examples-grid">
       <div class="example-card">
@@ -219,7 +224,7 @@
 
 <section class="cases" id="cas-clients">
   <div class="container">
-    <h2 class="section-title">Ils ont <span class="hl">récupéré du temps</span> grâce à AdminBelgique</h2>
+    <h2 class="section-title" data-i18n="cases.title">Ils ont <span class="hl">récupéré du temps</span> grâce à AdminBelgique</h2>
     <div class="cases-grid">
       <div class="case-card">
         <div class="case-emoji">🍞</div>
@@ -385,7 +390,7 @@
       <a href="https://adminbelgique.base44.app/" class="btn btn-primary btn-xl">⚡ Démarrer gratuitement (essai immédiat)</a>
       <a href="http://www.adminbelgique.com/" class="btn btn-secondary btn-xl">📅 Réserver ma démo personnalisée (accompagnement humain)</a>
     </div>
-    <p class="cta-final-sub">✓ Réponse sous 24h garantie · ✓ Sans engagement · ✓ Configuration offerte ce mois-ci</p>
+    <p class="cta-final-sub" data-i18n="cta.sub">✓ Réponse sous 24h garantie · ✓ Sans engagement · ✓ Configuration offerte ce mois-ci</p>
     <p class="cta-final-trust">🇧🇪 Made in Belgium · 🔒 RGPD · 💼 <strong>47 PME</strong> ont déjà commencé cette semaine</p>
   </div>
 </section>
@@ -445,6 +450,7 @@
   </div>
 </div>
 
-<script src="script.js"></script>
+<script src="i18n.js"></script>
+  <script src="script.js"></script>
 </body>
 </html>
