@@ -1,0 +1,11 @@
+# Robots.txt pour AdminBelgique
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://adminbelgique.com/sitemap.xml
+
+# Bloquer les pages d'app privées (elles sont sur app.adminbelgique.com de toute façon)
+Disallow: /api/
+Disallow: /admin/
+Disallow: /private/
