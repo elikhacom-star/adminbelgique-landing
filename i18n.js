@@ -11,7 +11,7 @@ const i18n = {
     'hero.badge.belgian': '🇧🇪 Conçu pour les PME belges',
     'hero.badge.rgpd': '🔒 RGPD — données en Belgique',
     'hero.badge.quick': '⚡ 30 min pour démarrer',
-    'hero.title': 'L\'<span class="hl">assistant IA pour PME belge</span> qui automatise votre administrative.<br>AdminBelgique vous rend <span class="hl">4h/semaine</span>.',
+    'hero.title': 'L\'<span class="hl">assistant IA pour PME belge</span> qui automatise votre administration.<br>AdminBelgique vous rend <span class="hl">4h/semaine</span>.',
     'hero.sub': "L'<strong>automatisation administrative pour la Belgique</strong> avec un <strong>chatbot IA pour entreprise belge</strong>. Conçu pour les PME belges. Conforme RGPD. 30 min pour démarrer.",
     'hero.cta1': '📅 Démo personnalisée pour mon entreprise',
     'hero.cta2': '⚙️ Voir une démo interactive',
