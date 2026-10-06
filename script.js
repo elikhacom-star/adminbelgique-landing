@@ -2,9 +2,11 @@
 // Modal + smooth nav + lead magnet
 
 // ===== CONFIG =====
-// Endpoint du service de formulaire (Formspree, Getform, Web3Forms…).
+// Endpoint du service de formulaire (Formspree, Brevo, Web3Forms…).
 // Exemple Formspree : 'https://formspree.io/f/xxxxxxx'
+// Tant qu'il reste vide, le formulaire bascule sur l'adresse de contact ci-dessous.
 const FORM_ENDPOINT = '';
+const CONTACT_EMAIL = 'elikaccesit@gmail.com';
 
 // Lead magnet form handler
 const lmForm = document.getElementById('leadmagnetFormEl');
@@ -19,8 +21,11 @@ if (lmForm) {
     const email = document.getElementById('leadmagnetEmail').value.trim();
     if (!email) return;
 
-    // Aucun endpoint configuré : on garde l'aperçu fonctionnel.
+    // Aucun endpoint configuré : on passe par l'email pour ne perdre aucun contact.
     if (!FORM_ENDPOINT) {
+      const subject = encodeURIComponent('Demande — modèle de bail AdminBelgique');
+      const body = encodeURIComponent('Bonjour,\n\nMerci de m\'envoyer le modèle de bail.\n\nMon email : ' + email + '\n');
+      window.location.href = 'mailto:' + CONTACT_EMAIL + '?subject=' + subject + '&body=' + body;
       showSuccess();
       return;
     }
