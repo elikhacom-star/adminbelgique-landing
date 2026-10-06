@@ -1,19 +1,47 @@
 // AdminBelgique — Landing page JS
 // Modal + smooth nav + lead magnet
 
+// ===== CONFIG =====
+// Endpoint du service de formulaire (Formspree, Getform, Web3Forms…).
+// Exemple Formspree : 'https://formspree.io/f/xxxxxxx'
+const FORM_ENDPOINT = '';
+
 // Lead magnet form handler
 const lmForm = document.getElementById('leadmagnetFormEl');
 if (lmForm) {
-  lmForm.addEventListener('submit', (e) => {
-    e.preventDefault();
-    const email = document.getElementById('leadmagnetEmail').value;
-    if (!email) return;
-    const leads = JSON.parse(localStorage.getItem('ab-leads') || '[]');
-    leads.push({ email, ts: Date.now() });
-    localStorage.setItem('ab-leads', JSON.stringify(leads));
+  const showSuccess = () => {
     document.getElementById('leadmagnetForm').style.display = 'none';
     document.getElementById('leadmagnetSuccess').style.display = 'block';
-    console.log('Lead captured:', email);
+  };
+
+  lmForm.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const email = document.getElementById('leadmagnetEmail').value.trim();
+    if (!email) return;
+
+    // Aucun endpoint configuré : on garde l'aperçu fonctionnel.
+    if (!FORM_ENDPOINT) {
+      showSuccess();
+      return;
+    }
+
+    const btn = lmForm.querySelector('button[type="submit"]');
+    const label = btn ? btn.textContent : '';
+    if (btn) { btn.disabled = true; btn.textContent = 'Envoi…'; }
+
+    try {
+      const res = await fetch(FORM_ENDPOINT, {
+        method: 'POST',
+        headers: { 'Accept': 'application/json' },
+        body: new FormData(lmForm)
+      });
+      if (!res.ok) throw new Error('HTTP ' + res.status);
+      showSuccess();
+    } catch (err) {
+      if (btn) { btn.disabled = false; btn.textContent = label; }
+      alert("L'envoi a échoué. Merci de réessayer dans un instant.");
+      console.error('Lead submit failed:', err);
+    }
   });
 }
 
