@@ -37,6 +37,9 @@
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%23003d7a'/%3E%3Ctext x='50' y='72' text-anchor='middle' font-family='Georgia,serif' font-weight='900' font-size='62' fill='%23ffd700'%3EAB%3C/text%3C/svg%3E">
   <link rel="stylesheet" href="style.css">
 
+  <!-- Analytics sans cookies (Plausible) — créez le site « adminbelgique.com » dans votre compte Plausible pour voir les statistiques. -->
+  <script defer data-domain="adminbelgique.com" src="https://plausible.io/js/script.js"></script>
+
   <!-- JSON-LD: Organization -->
   <script type="application/ld+json">
   {
@@ -238,22 +241,28 @@
         <span class="logo-tag">🇧🇪 Assistant IA PME</span>
       </span>
     </a>
-    <nav class="nav">
+    <nav class="nav" id="siteNav">
       <a href="#benefices">Bénéfices</a>
       <a href="#fonctionnalites" data-i18n="nav.features">Fonctionnalités</a>
       <a href="#immoboost">ImmoBoost AI</a>
       <a href="#cas-clients" data-i18n="nav.cases">Cas clients</a>
+      <a href="avis.html">Avis clients</a>
       <a href="#tarifs" data-i18n="nav.pricing">Tarifs</a>
       <a href="#faq" data-i18n="nav.faq">FAQ</a>
+      <a href="acquisition.html" class="btn btn-acq-nav btn-acq-menu">💎 Acquérir le projet</a>
     </nav>
+    <button class="nav-toggle" type="button" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="siteNav">☰</button>
     <div class="lang-switcher">
       <button data-lang="fr" class="active" aria-label="Français">🇫🇷 FR</button>
       <button data-lang="nl" aria-label="Nederlands">🇧🇪 NL</button>
       <button data-lang="en" aria-label="English">🇬🇧 EN</button>
     </div>
+    <a href="acquisition.html" class="btn btn-secondary btn-sm btn-acq-nav">💎 Acquérir le projet</a>
     <a href="https://app.adminbelgique.com" class="btn btn-primary btn-sm" target="_blank">🚀 Commencer Gratuitement</a>
   </div>
 </header>
+
+<div class="i18n-notice" id="i18nNotice" hidden></div>
 
 <!-- ===== HERO ===== -->
 <section class="hero">
@@ -734,7 +743,7 @@
     <p style="font-size: 1.1rem; margin-bottom: 2rem; opacity: .95;">Conforme à la loi 2026. Format PDF prêt à imprimer. Téléchargement immédiat.</p>
     <div class="leadmagnet-form-wrap" id="leadmagnetForm">
       <form id="leadmagnetFormEl" style="display: flex; gap: .5rem; max-width: 500px; margin: 0 auto; flex-wrap: wrap; justify-content: center;">
-        <input type="email" id="leadmagnetEmail" placeholder="votre@email.com" required style="flex: 1; min-width: 250px; padding: 1rem 1.2rem; border: none; border-radius: 6px; font-size: 1rem; font-family: inherit;">
+        <input type="email" id="leadmagnetEmail" name="email" placeholder="votre@email.com" required style="flex: 1; min-width: 250px; padding: 1rem 1.2rem; border: none; border-radius: 6px; font-size: 1rem; font-family: inherit;">
         <button type="submit" style="background: #c8a958; color: #003d7a; border: none; padding: 1rem 1.5rem; border-radius: 6px; font-weight: 700; cursor: pointer; font-size: 1rem; font-family: inherit;">📥 Recevoir le modèle</button>
       </form>
       <p style="font-size: .85rem; margin-top: 1rem; opacity: .8;">🔒 Vos données restent en Belgique · Pas de spam · Désabonnement en 1 clic</p>
@@ -758,7 +767,7 @@
     <p>30 minutes de configuration, et vos employés retrouvent du temps pour ce qui compte vraiment.</p>
     <div class="cta-buttons">
       <a href="https://app.adminbelgique.com/" class="btn btn-primary btn-xl">⚡ Démarrer gratuitement (essai immédiat)</a>
-      <a href="http://www.adminbelgique.com/" class="btn btn-secondary btn-xl">📅 Réserver ma démo personnalisée (accompagnement humain)</a>
+      <a href="https://wa.me/32467801041?text=Bonjour%2C%20je%20souhaite%20une%20d%C3%A9mo%20personnalis%C3%A9e%20AdminBelgique%20pour%20mon%20entreprise" class="btn btn-secondary btn-xl" target="_blank" rel="noopener">📅 Réserver ma démo personnalisée (accompagnement humain)</a>
     </div>
     <p class="cta-final-sub" data-i18n="cta.sub">✓ Réponse sous 24h garantie · ✓ Sans engagement · ✓ Configuration offerte ce mois-ci</p>
     <p class="cta-final-trust">🇧🇪 Made in Belgium · 🔒 RGPD · 💼 <strong>47 PME</strong> ont déjà commencé cette semaine</p>
@@ -783,10 +792,11 @@
       <a href="#fonctionnalites">Fonctionnalités</a>
       <a href="#tarifs">Tarifs</a>
       <a href="#cas-clients">Cas clients</a>
+      <a href="avis.html">Avis clients</a>
     </div>
     <div class="footer-col">
       <h4>Entreprise</h4>
-      <a href="http://www.adminbelgique.com/">Site principal</a>
+      <a href="https://adminbelgique.com/">Site principal</a>
       <a href="mailto:elikaccesit@gmail.com">Contact</a>
       <a href="tel:+32467801041">+32 467 80 10 41</a>
     </div>
@@ -816,11 +826,12 @@
       <li><strong>Documents générés</strong> — Un nouveau contrat ? Généré en 30 sec depuis vos modèles.</li>
     </ol>
     <p class="modal-cta-text">Convaincu ? Réservez une démo personnalisée :</p>
-    <a href="http://www.adminbelgique.com/" class="btn btn-primary btn-block">📅 Réserver ma démo</a>
+    <a href="https://wa.me/32467801041?text=Bonjour%2C%20je%20souhaite%20une%20d%C3%A9mo%20personnalis%C3%A9e%20AdminBelgique%20pour%20mon%20entreprise" class="btn btn-primary btn-block" target="_blank" rel="noopener">📅 Réserver ma démo</a>
   </div>
 </div>
 
 <script src="i18n.js"></script>
+  <script src="nav.js"></script>
   <script src="script.js"></script>
 </body>
 </html>
