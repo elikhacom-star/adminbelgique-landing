@@ -831,4 +831,17 @@ p { margin: 0 0 1em; }
 /* Bouton d'en-tête vers la page acquisition */
 .btn-acq-nav { border-color: var(--color-gold-dark); background: var(--color-gold); color: var(--color-navy-dark); }
 .btn-acq-nav:hover { background: var(--color-gold-dark); color: var(--color-navy-dark); }
-@media (max-width: 768px) { .btn-acq-nav { display: none; } }
+/* Le bouton d'en-tête est masqué sur mobile ; il est remplacé par celui du menu burger */
+.btn-acq-menu { display: none; }
+@media (max-width: 768px) {
+  .btn-acq-nav { display: none; }
+  .nav a.btn-acq-menu {
+    display: inline-flex;
+    width: 100%;
+    justify-content: center;
+    margin-top: .75rem;
+    padding: 1rem;
+    border-bottom: none;
+    font-size: 1rem;
+  }
+}
