@@ -1,16 +1,33 @@
-# AGENTS.md — AdminBelgique Landing Page
+# AGENTS.md
 
 ## Project overview
-Static HTML/CSS/JS marketing landing page for "AdminBelgique" (French, Belgian PME admin automation tool). No build step, no backend, no package manager. Pages: `index.html`, `acquisition.html`, `avis.html`, `cookies.html`, `leadmagnet-bail.html`, `privacy.html`, `terms.html`. Assets: `style.css`, `script.js`, `nav.js`, `i18n.js`, `logo.png`, `og-image.png`, `twitter-card.png`.
+
+Static HTML/CSS/JS landing page for **AdminBelgique** (no build system, no framework, no backend).
+Files served directly: `index.html`, `style.css`, `script.js`, `i18n.js`, plus standalone pages
+(`cookies.html`, `privacy.html`, `terms.html`, `leadmagnet-bail.html`) and SEO files (`sitemap.xml`, `robots.txt`).
 
 ## Running in the Base44 sandbox
-- Served by `nginx:alpine` via `docker-compose.base44.yml` on host port 3000.
-- The repo root is bind-mounted read-only into `/usr/share/nginx/html`.
-- A custom `nginx.conf` (also bind-mounted) sets `user root;` because the sandbox repo directory has `drwx------` permissions — nginx's default non-root worker cannot traverse it. Do not remove this override.
-- Edits to HTML/CSS/JS are reflected on browser refresh (nginx serves files directly from the bind mount; no live-reload server needed).
 
-## No external credentials
-The lead-magnet form (`script.js`) uses a `mailto:` fallback when `FORM_ENDPOINT` is empty. No secrets are required to run the site.
+- Served by `nginx:alpine` via `docker-compose.base44.yml` on host port 3000.
+- The repo root is bind-mounted read-only into the container at `/usr/share/nginx/html`.
+- A custom `nginx.base44.conf` is mounted to `/etc/nginx/nginx.conf`. It sets `user root;`
+  so nginx can read the source directory even when the sandbox mounts it with restrictive
+  `700` permissions (root bypasses the permission check). Do not remove `user root;` or the
+  container will return 403 Forbidden after a fresh sandbox creation.
+- Edits to static files are reflected immediately on page refresh (no rebuild needed).
+  Call `reload_preview` after changes that should not require a manual refresh.
 
 ## Healthcheck
-`wget --spider http://localhost:80/` — verifies nginx is serving.
+
+- Probes `http://127.0.0.1:80/` (not `localhost`, which resolves to IPv6 `::1` where nginx
+  does not listen).
+
+## Verification
+
+- `curl -s -o /dev/null -w "%{http_code}" http://localhost:3000/` should return `200`.
+- All static assets (`style.css`, `script.js`, `i18n.js`, standalone pages) return `200`.
+
+## Notes
+
+- The `CNAME` file (`adminbelgique.com`) is a GitHub Pages artifact and is not used by the
+  sandbox nginx setup.
