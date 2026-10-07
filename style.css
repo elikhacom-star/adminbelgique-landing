@@ -100,6 +100,41 @@ p { margin: 0 0 1em; }
 .cta-buttons .btn { width: 100%; }
 .btn-block { display: flex; width: 100%; }
 
+/* ===== Sale banner ===== */
+.sale-banner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+.sale-banner-text { flex: 1 1 24rem; }
+.sale-banner-acquisition {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 48px;
+  padding: .75rem 1.25rem;
+  border: 2px solid var(--color-white);
+  border-radius: var(--radius-md);
+  background: var(--color-navy);
+  color: var(--color-white);
+  font-size: 1rem;
+  font-weight: 800;
+  box-shadow: var(--shadow-md);
+}
+.sale-banner-acquisition:hover {
+  background: var(--color-navy-dark);
+  color: var(--color-white);
+}
+.sale-banner-acquisition:focus-visible {
+  outline: 3px solid var(--color-navy-dark);
+  outline-offset: 3px;
+}
+@media (max-width: 600px) {
+  .sale-banner-acquisition { width: 100%; }
+}
+
 /* ===== Header ===== */
 .site-header {
   position: sticky;
