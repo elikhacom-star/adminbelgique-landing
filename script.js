@@ -1,19 +1,52 @@
 // AdminBelgique — Landing page JS
 // Modal + smooth nav + lead magnet
 
+// ===== CONFIG =====
+// Endpoint du service de formulaire (Formspree, Brevo, Web3Forms…).
+// Exemple Formspree : 'https://formspree.io/f/xxxxxxx'
+// Tant qu'il reste vide, le formulaire bascule sur l'adresse de contact ci-dessous.
+const FORM_ENDPOINT = '';
+const CONTACT_EMAIL = 'elikaccesit@gmail.com';
+
 // Lead magnet form handler
 const lmForm = document.getElementById('leadmagnetFormEl');
 if (lmForm) {
-  lmForm.addEventListener('submit', (e) => {
-    e.preventDefault();
-    const email = document.getElementById('leadmagnetEmail').value;
-    if (!email) return;
-    const leads = JSON.parse(localStorage.getItem('ab-leads') || '[]');
-    leads.push({ email, ts: Date.now() });
-    localStorage.setItem('ab-leads', JSON.stringify(leads));
+  const showSuccess = () => {
     document.getElementById('leadmagnetForm').style.display = 'none';
     document.getElementById('leadmagnetSuccess').style.display = 'block';
-    console.log('Lead captured:', email);
+  };
+
+  lmForm.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const email = document.getElementById('leadmagnetEmail').value.trim();
+    if (!email) return;
+
+    // Aucun endpoint configuré : on passe par l'email pour ne perdre aucun contact.
+    if (!FORM_ENDPOINT) {
+      const subject = encodeURIComponent('Demande — modèle de bail AdminBelgique');
+      const body = encodeURIComponent('Bonjour,\n\nMerci de m\'envoyer le modèle de bail.\n\nMon email : ' + email + '\n');
+      window.location.href = 'mailto:' + CONTACT_EMAIL + '?subject=' + subject + '&body=' + body;
+      showSuccess();
+      return;
+    }
+
+    const btn = lmForm.querySelector('button[type="submit"]');
+    const label = btn ? btn.textContent : '';
+    if (btn) { btn.disabled = true; btn.textContent = 'Envoi…'; }
+
+    try {
+      const res = await fetch(FORM_ENDPOINT, {
+        method: 'POST',
+        headers: { 'Accept': 'application/json' },
+        body: new FormData(lmForm)
+      });
+      if (!res.ok) throw new Error('HTTP ' + res.status);
+      showSuccess();
+    } catch (err) {
+      if (btn) { btn.disabled = false; btn.textContent = label; }
+      alert("L'envoi a échoué. Merci de réessayer dans un instant.");
+      console.error('Lead submit failed:', err);
+    }
   });
 }
 

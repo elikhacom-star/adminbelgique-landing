@@ -105,6 +105,14 @@ function setLang(lang) {
   });
   document.documentElement.lang = lang;
   localStorage.setItem('ab-lang', lang);
+
+  // Bandeau d'information : la traduction est partielle hors français.
+  const notice = document.getElementById('i18nNotice');
+  if (notice) {
+    const text = dict['footer.partial'];
+    notice.textContent = text || '';
+    notice.hidden = lang === 'fr' || !text;
+  }
 }
 
 function initLang() {
