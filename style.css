@@ -827,3 +827,8 @@ p { margin: 0 0 1em; }
   .immoboost-roadmap { grid-template-columns: 1fr; }
   .immoboost-step { flex-direction: column; }
 }
+
+/* Bouton d'en-tête vers la page acquisition */
+.btn-acq-nav { border-color: var(--color-gold-dark); background: var(--color-gold); color: var(--color-navy-dark); }
+.btn-acq-nav:hover { background: var(--color-gold-dark); color: var(--color-navy-dark); }
+@media (max-width: 768px) { .btn-acq-nav { display: none; } }
